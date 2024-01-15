@@ -4,14 +4,14 @@ import {
   getDefaultConfig,
 } from "connectkit";
 import { WagmiConfig, createConfig } from "wagmi";
+import { Charts } from "./Charts";
 import { MyComponent } from "./MyComponent";
 
 const config = createConfig(
   getDefaultConfig({
     // Required API Keys
-    alchemyId: import.meta.env.PUBLIC_ALCHEMY_ID || "", // or infuraId
-    walletConnectProjectId:
-      import.meta.env.PUBLIC_WALLETCONNECT_PROJECT_ID || "",
+    alchemyId: import.meta.env.PUBLIC_ALCHEMY_ID,
+    walletConnectProjectId: import.meta.env.PUBLIC_WALLETCONNECT_PROJECT_ID,
 
     // Required
     appName: "lfgho",
@@ -106,6 +106,7 @@ const App = () => {
       >
         <ConnectKitButton />
         <MyComponent />
+        <Charts />
       </ConnectKitProvider>
     </WagmiConfig>
   );
