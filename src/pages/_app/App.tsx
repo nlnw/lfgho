@@ -4,11 +4,12 @@ import {
   getDefaultConfig,
 } from "connectkit";
 import { WagmiConfig, createConfig } from "wagmi";
+import { sepolia } from "wagmi/chains";
 import { Charts } from "./Charts";
 import { MyComponent } from "./MyComponent";
 
-const config = createConfig(
-  getDefaultConfig({
+const config = createConfig({
+  ...getDefaultConfig({
     // Required API Keys
     alchemyId: import.meta.env.PUBLIC_ALCHEMY_ID,
     walletConnectProjectId: import.meta.env.PUBLIC_WALLETCONNECT_PROJECT_ID,
@@ -20,8 +21,11 @@ const config = createConfig(
     appDescription: "Your App Description",
     appUrl: "https://family.co",
     appIcon: "https://family.co/logo.png",
+
+    //
+    chains: [sepolia],
   }),
-);
+});
 
 const App = () => {
   return (
