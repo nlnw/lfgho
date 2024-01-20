@@ -6,12 +6,16 @@
     "deploy": "$npm_execpath run build && wrangler pages deploy --project-name $npm_package_name dist"
   },
   "dependencies": {
+    "@aave/contract-helpers": "1.23.0",
+    "@aave/math-utils": "1.23.0",
     "@astrojs/check": "^0.4.1",
     "@astrojs/cloudflare": "^8.1.0",
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.1.2",
+    "@bgd-labs/aave-address-book": "^2.17.0",
+    "astro": "^4.2.1",
     "connectkit": "^1.6.0",
+    "highcharts-react-official": "^3.2.1",
     "typescript": "^5.3.3"
   }
 }
