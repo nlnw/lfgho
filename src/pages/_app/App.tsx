@@ -5,7 +5,6 @@ import {
 } from "connectkit";
 import { WagmiConfig, createConfig } from "wagmi";
 import { sepolia } from "wagmi/chains";
-import { Charts } from "./Charts";
 import { MyComponent } from "./MyComponent";
 
 const config = createConfig({
@@ -110,7 +109,7 @@ const App = () => {
       >
         <ConnectKitButton />
         <MyComponent />
-        <Charts />
+        {/* <Charts /> */}
       </ConnectKitProvider>
     </WagmiConfig>
   );

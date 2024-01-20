@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useAccount, useContractRead } from "wagmi";
+import { parseEther } from "viem";
+import { useAccount, useContractRead, useSendTransaction } from "wagmi";
 import abi from "./abis/gho.json";
 import { fetchContractData } from "./scripts/data";
 
@@ -12,6 +13,7 @@ export const MyComponent = () => {
     args: [address],
   });
   const [bal, setBal] = useState<number>();
+  const { data: hash, isLoading, sendTransaction } = useSendTransaction();
 
   useEffect(() => {
     async function getBalance() {
@@ -22,6 +24,14 @@ export const MyComponent = () => {
     getBalance();
   }, []);
 
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const to = formData.get("address") as `0x${string}`;
+    const value = formData.get("value") as string;
+    sendTransaction({ to, value: parseEther(value) });
+  }
+
   if (isConnecting) return <div>Connecting...</div>;
   if (isDisconnected) return <div>Disconnected</div>;
   if (!data) return <div>Loading...</div>;
@@ -30,6 +40,14 @@ export const MyComponent = () => {
       <p>Connected Wallet: {address}</p>
       <p>Gho balance: {(data / 10n ** 18n).toString()}</p>
       <p>Gho balance2: {bal}</p>
+      <form onSubmit={submit}>
+        <input name="address" placeholder="0xA0Cf…251e" required />
+        <input name="value" placeholder="0.05" required />
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Confirming..." : "Send"}{" "}
+        </button>
+        {hash && <div>Transaction Hash: {hash.toString()}</div>}
+      </form>
     </div>
   );
 };
