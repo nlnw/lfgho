@@ -15,7 +15,6 @@
     "@bgd-labs/aave-address-book": "^2.17.0",
     "astro": "^4.2.1",
     "connectkit": "^1.6.0",
-    "highcharts-react-official": "^3.2.1",
     "typescript": "^5.3.3"
   }
 }

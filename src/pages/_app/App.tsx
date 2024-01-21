@@ -5,7 +5,8 @@ import {
 } from "connectkit";
 import { WagmiConfig, createConfig } from "wagmi";
 import { sepolia } from "wagmi/chains";
-import { MyComponent } from "./MyComponent";
+import { Balance } from "./Balance";
+import { Form } from "./Form";
 
 const config = createConfig({
   ...getDefaultConfig({
@@ -94,7 +95,6 @@ const App = () => {
           "--ck-body-disclaimer-link-color": "#000000",
           "--ck-body-disclaimer-link-hover-color": "#000000",
           "--ck-body-disclaimer-background": "#80fff7",
-          "--ck-connectbutton-font-size": "9px",
           "--ck-connectbutton-border-radius": "3px",
           "--ck-connectbutton-color": "#ffffff",
           "--ck-connectbutton-background": "#009c92",
@@ -107,9 +107,13 @@ const App = () => {
           "--ck-connectbutton-active-box-shadow": "0px 3px 0px 0px #009c92",
         }}
       >
-        <ConnectKitButton />
-        <MyComponent />
-        {/* <Charts /> */}
+        <div className="mb-4 flex justify-center">
+          <ConnectKitButton showAvatar={true} showBalance={true} />
+        </div>
+        <div className="mb-4 flex justify-center">
+          <Balance />
+        </div>
+        <Form />
       </ConnectKitProvider>
     </WagmiConfig>
   );

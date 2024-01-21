@@ -17,7 +17,7 @@ const pool = new Pool(provider, {
   WETH_GATEWAY: AaveV3Sepolia.WETH_GATEWAY,
 });
 
-function getTransactions(user: `0x${string}`) {
+export async function getTransactions(user: `0x${string}`) {
   /*
 - @param `user` The ethereum address that will receive the borrowed amount 
 - @param `reserve` The ethereum address of the reserve asset 
